@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br><br>
+    <form action=" " method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+        <label for="">bookname</label>
+        <input type="text" name="bookname">
+        <br><br>
+        <label for="">categoryname</label>
+        <select name="categoryname" id="categoryname">
+            {% for i in m %}
+            <option value="{{i.id}}">{{i.categoryname}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="">nmbrofcopies</label>
+        <input type="number" name="nmbrofcopies">
+        <br><br>
+        <label for="">description</label>
+        <input type="text" name="description">
+        <br><br>
+        <label for="">authername</label>
+        <input type="text" name="authername">
+        <br><br>
+        <label for="">coverpage</label>
+        <input type="file" name="file">
+        <br><br>
+        <input type="submit" class="btn btn-secondary" value="submit">
+    </form>
+    {% if messages %}
+{% for msg in messages %}  
+<script>alert('{{msg}}')</script>
+{% endfor %} 
+{% endif %}
+</div>
+</div>
+<div class="col-lg-3">
+</div>
+</div>
+<br><br><br>
+{% endblock %}

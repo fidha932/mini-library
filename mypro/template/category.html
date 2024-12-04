@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br><br><br><br><br><br><br><br><br>
+<form action="" method="post">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+              <input input type="text" name="categoryname" placeholder="categoryname">
+            </div>
+            <div class="col">
+                <input type="submit" value="submit">
+            </div>
+          </div>
+</form>
+    {% if messages %}
+{% for msg in messages %}  
+<script>alert('{{msg}}')</script>
+{% endfor %} 
+{% endif %}
+</div>
+</div>
+<div class="col-lg-3">
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

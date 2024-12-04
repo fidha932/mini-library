@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %} 
+<br>   
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>bookname</th>
+            <th>categoryname</th>
+            <th>nmbrofcopies</th>
+            <th>description</th>
+            <th>authername</th>
+            <th>coverpage</th>
+            <th>addbook</th>
+        </tr>
+        </thead>
+        {% for i in m %}
+        <tbody class="table-info">
+        <tr>
+            <th>{{i.bookname}}</th>
+            <th>{{i.category_name.categoryname}}</th>
+            <th>{{i.nmbrofcopies}}</th>
+            <th>{{i.description}}</th>
+            <th>{{i.authername}}</th>
+            <th><img src="{{i.coverpage.url}}" style="width: 100px; height:100px"></th> 
+            <th><a href="{% url 'booktable' i.id %}">book</a></th>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    {% if messages %}
+    {% for msg in messages %}  
+    <script>alert('{{msg}}')</script>
+    {% endfor %} 
+    {% endif %}
+    <br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $('#course').change(function(){
+        var cid=$('#course').val()
+    $.ajax({
+        url:"{% url 'sbjct' %}",
+        data:{'co':cid},
+        success:function(data){
+            $('#subject').html(data)
+        }
+    })
+    })
+    })
+</script>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">  
+        </div>
+
+        <div class="col-lg-6">
+    <form action="" method="post">
+        {%csrf_token%}
+        <label for="">username:</label>
+        <input type="text" name="username" class="form-control" placeholder="username">
+        <label for="">password:</label>
+        <input type="password" name="password" class="form-control" placeholder="password">
+        <label for="">name:</label>
+        <input type="text" name="name" class="form-control" placeholder="name">
+        <label for="">age:</label>
+        <input type="number" name="age" class="form-control" placeholder="age">
+        <label for="">school:</label>
+        <input type="text" name="school" class="form-control" placeholder="school">
+        <label for="">course:</label>
+        <select name="course" id="course" class="form-control" placeholder="course">
+            {% for i in m %}
+            <option value="{{i.id}}">{{i.course_name}}</option>
+            {% endfor %}
+        </select>
+        <label for="">subject:</label>
+        <select name="subject" id="subject" class="form-control" placeholder="subject">
+            <option value="">---select---</option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>    
+    </form>
+    </div>
+    </div>
+    <div class="col-lg-3">  
+</div>
+</div>
+
+<br>
+<br>
+ {% if messages %}
+{% for msg in messages %}  
+<script>alert('{{msg}}')</script>
+{% endfor %} 
+{% endif %}
+
+{% endblock %}

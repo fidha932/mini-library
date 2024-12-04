@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <table class="table table-secondary table-striped"> 
+        <tr>
+            <th>studentid</th>
+            <th>bookname</th>
+            <th>categoryname</th>
+            <th>description</th>
+            <th>authername</th>
+            <th>coverpage</th>
+            <th>bookingdate</th>
+            <th>returndate</th>
+            <th>status</th>
+            <th>return</th>
+        </tr>
+        {% for i in m %}
+        <tr>
+            <th>{{i.studentid}}</th>
+            <th>{{i.bookid.bookname}}</th>
+            <th>{{i.bookid.category_name.categoryname}}</th>
+            <th>{{i.bookid.description}}</th>
+            <th>{{i.bookid.authername}}</th>
+            <th><img src="{{i.bookid.coverpage.url}}" style="width: 100px; height:100px"></th>
+            <th>{{i.bookingdate}}</th>
+            <th>{{i.returndate}}</th>
+            <th>{{i.status}}</th>
+            <th><a href="{% url 'book_return' i.id %}">return</a></th>
+        </tr>
+        {% endfor%}
+    </table>
+
+{% if messages %}
+{% for msg in messages %}  
+<script>alert('{{msg}}')</script>
+{% endfor %} 
+{% endif %}
+<br><br><br><br><br><br><br>
+{% endblock %} 

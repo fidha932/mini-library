@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+        <label for="">name</label>
+        <input type="text" name="name">
+        <br><br>
+        <label for="">age</label>
+        <input type="number" name="age">
+        <br><br>
+        <label for="">school</label>
+        <input type="text" name="school">
+        <br><br>
+        <input type="submit" class="btn btn-primary" value="submit">
+    </form>
+{% if messages %}
+{% for msg in messages %}  
+<script>alert('{{msg}}')</script>
+{% endfor %} 
+{% endif %} 
+</div>
+</div>
+<div class="col-lg-3">
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

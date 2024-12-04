@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br>
+    <table class="table table-dark table-hover">
+        <tr>
+            <th>bookname</th>
+            <th>categoryname</th>
+            <th>nmbrofcopies</th>
+            <th>description</th>
+            <th>authername</th>
+            <th>coverpage</th>
+            <th>update</th>
+            <th>delete</th>
+        </tr>
+        {% for i in m %}
+        <tr>
+            <th>{{i.bookname}}</th>
+            <th>{{i.category_name.categoryname}}</th>
+            <th>{{i.nmbrofcopies}}</th>
+            <th>{{i.description}}</th>
+            <th>{{i.authername}}</th>
+            <th><img src="{{i.coverpage.url}}" style="width: 100px; height:100px"></th>
+            <th><a href="{% url 'updateb' i.id %}">update</a></th>
+            <th><a href="{% url 'deleteb' i.id %}">delete</a></th>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br><br><br><br><br><br>
+{% endblock %}

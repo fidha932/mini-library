@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br>
+    <table class="table table-dark table-striped"> 
+        <thead class="table-secondary">
+        <tr>
+            <th>studentid</th>
+            <th>bookname</th>
+            <th>categoryname</th>
+            <th>description</th> 
+            <th>authername</th>
+            <th>coverpage</th>
+            <th>bookingdate</th>
+            <th>returndate</th>
+            <th>status</th>
+        </tr>
+        </thead>
+        {% for i in m %}
+        <tr>
+            <th>{{i.studentid}}</th>
+            <th>{{i.bookid.bookname}}</th>
+            <th>{{i.bookid.category_name.categoryname}}</th>
+            <th>{{i.bookid.description}}</th>
+            <th>{{i.bookid.authername}}</th>
+            <th><img src="{{i.bookid.coverpage.url}}" style="width: 100px; height:100px"></th>
+            <th>{{i.bookingdate}}</th>
+            <th>{{i.returndate}}</th>
+            <th>{{i.status}}</th>
+        </tr>
+        {% endfor%}
+    
+    </table>
+{% endblock %}

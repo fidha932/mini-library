@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br>
+    <table class="table table-borderless">
+        <thead class="table-secondary">
+        <tr>
+            <th>username</th>
+            <th>name</th>
+            <th>age</th>
+            <th>school</th>
+            <th>course</th>
+            <th>subject</th>
+        </tr>
+        </thead>
+        {% for i in m %}
+        <tr>
+            <th>{{i.username}}</th>
+            <th>{{i.name}}</th>
+            <th>{{i.age}}</th>
+            <th>{{i.school}}</th>
+            <th>{{i.course}}</th>
+            <th>{{i.subject}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
